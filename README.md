@@ -63,3 +63,8 @@ card (for example, card-mod if installed).
 
 The component does not depend on ha-lcars or LARdS; their cards can be used in
 either area like any other Lovelace card.
+
+## License
+
+This project is licensed under the Apache License 2.0. See [LICENSE](./LICENSE)
+for the full license text.
