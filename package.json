@@ -1,0 +1,18 @@
+{
+  "name": "lcars-expander-card",
+  "version": "0.1.0",
+  "description": "A configurable expanding grid card for Home Assistant dashboards",
+  "type": "module",
+  "scripts": {
+    "build": "vite build",
+    "typecheck": "tsc --noEmit"
+  },
+  "dependencies": {
+    "custom-card-helpers": "^1.9.0",
+    "lit": "^3.2.1"
+  },
+  "devDependencies": {
+    "typescript": "^5.7.2",
+    "vite": "^6.0.5"
+  }
+}
