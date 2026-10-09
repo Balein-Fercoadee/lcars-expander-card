@@ -115,6 +115,10 @@ uix:
   class: middle-left
 ```
 
+Here it is in-action:
+
+![Demo](./card_demo.gif)
+
 ## License
 
 This project is licensed under the Apache License 2.0. See [LICENSE](./LICENSE)
