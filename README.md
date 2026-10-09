@@ -61,7 +61,7 @@ drawer_style:
 | --- | --- |
 | `header` | Area where you add the header card. |
 | `drawer.cards` | Accepts any number of normal Lovelace card configurations. |
-| `drawer.columns` | Number of grid columns; a positive integer that defaults to `2`. |
+| `drawer.columns` | Number of grid columns; a positive integer. Defaults to `2`. |
 | `default_expanded` | Initial state: `true` starts with the drawer expanded; `false`. starts it collapsed. Defaults to `false`. |
 | `hold_action` | Uses Home Assistant's standard card action configuration. A normal header click toggles the drawer. |
 | `tap_action` | Uses Home Assistant's standard card action configuration. Note: Clicking/tapping the header will toggle the drawer regardless of this setting. |
