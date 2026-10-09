@@ -77,43 +77,226 @@ card (for example, card-mod if installed).
 
 ## Example
 
-Here's an example that uses standard buttons and styling from [ha-lcars](https://github.com/th3jesta/ha-lcars):
+Here's an example of a section that uses the LCARS expander card with standard buttons and styling from [ha-lcars](https://github.com/th3jesta/ha-lcars):
 
 ```yaml
-type: custom:lcars-expander-card
-header:
-  type: button
-  entity: light.office_office
-  name: Office
-  icon: mdi:lightbulb-group
-  show_name: true
-  show_icon: true
-  tap_action:
-    action: none
-  hold_action:
-    action: toggle
-  uix:
-    class: button-lozenge-left
-    sound: true
-drawer:
-  columns: 2
-  cards:
-    - type: button
-      entity: light.office_office_s
-      name: South
+type: grid
+columns: 2
+square: false
+gap: 0
+padding: 0
+cards:
+  - type: markdown
+    content: '# Illumination'
+    uix:
+      class: header-contained
+  - type: custom:lcars-expander-card
+    header:
+      type: button
+      entity: light.dining_dining
+      name: Dining Room
       tap_action:
+        action: none
+      hold_action:
         action: toggle
       uix:
-        class: button-capped-left
+        class: button-lozenge-left
         sound: true
-    - type: button
-      name: a button
+    drawer:
+      columns: 2
+      cards:
+        - type: button
+          entity: light.dining_dinning_room_n
+          name: North
+          tap_action:
+            action: toggle
+          uix:
+            class: button-lozenge-left
+            sound: true
+        - type: button
+          entity: light.dining_dinning_room_s
+          name: South
+          tap_action:
+            action: toggle
+          uix:
+            class: button-lozenge-right
+            sound: true
+        - type: button
+          entity: light.dining_dining
+          name: All
+          tap_action:
+            action: toggle
+          uix:
+            class: button-lozenge-left
+            sound: true
+    uix:
+      class: middle-left middle-right
+  - type: custom:lcars-expander-card
+    header:
+      type: button
+      entity: light.living_room_living_room
+      name: Living Room
+      show_icon: true
+      show_name: true
+      tap_action:
+        action: none
+      hold_action:
+        action: toggle
       uix:
-        class: button-capped-right
+        class: button-lozenge-left
+    drawer:
+      columns: 2
+      cards:
+        - type: button
+          entity: light.living_room_living_room_e
+          name: East
+          tap_action:
+            action: toggle
+          uix:
+            class: button-lozenge-left
+            sound: true
+        - type: button
+          entity: light.living_room_living_room_c
+          name: Center
+          tap_action:
+            action: toggle
+          uix:
+            class: button-lozenge-right
+            sound: true
+        - type: button
+          entity: light.living_room_living_room_w
+          name: West
+          tap_action:
+            action: toggle
+          uix:
+            class: button-lozenge-left
+            sound: true
+        - show_name: true
+          show_icon: true
+          type: button
+          entity: light.living_room_living_room
+          name: All
+          tap_action:
+            action: toggle
+          uix:
+            class: button-lozenge-right
+            sound: true
+    uix:
+      class: middle-left middle-right
+  - type: custom:lcars-expander-card
+    header:
+      type: button
+      entity: light.kitchen_kitchen
+      name: Kitchen
+      icon: mdi:lightbulb-group
+      uix:
+        class: button-lozenge-left
         sound: true
-uix:
-  class: middle-left
+      tap_action:
+        action: none
+      hold_action:
+        action: toggle
+    uix:
+      class: middle-left middle-right
+    drawer:
+      cards:
+        - type: button
+          entity: light.kitchen_kitchen_nw
+          name: Northwest
+          tap_action:
+            action: toggle
+          uix:
+            class: button-lozenge-left
+            sound: true
+        - type: button
+          entity: light.kitchen_kitchen_ne
+          name: Northeast
+          tap_action:
+            action: toggle
+          uix:
+            class: button-lozenge-right
+            sound: true
+        - type: button
+          entity: light.kitchen_kitchen_w
+          name: West
+          tap_action:
+            action: toggle
+          uix:
+            class: button-lozenge-left
+            sound: true
+        - type: button
+          entity: light.kitchen_kitchen_e
+          name: East
+          tap_action:
+            action: toggle
+          uix:
+            class: button-lozenge-right
+            sound: true
+        - type: button
+          entity: light.kitchen_kitchen_sw
+          name: Southwest
+          tap_action:
+            action: toggle
+          uix:
+            class: button-lozenge-left
+            sound: true
+        - type: button
+          entity: light.kitchen_kitchen_se
+          name: Southeast
+          tap_action:
+            action: toggle
+          uix:
+            class: button-lozenge-right
+            sound: true
+        - type: button
+          entity: light.kitchen_kitchen
+          name: All
+          tap_action:
+            action: toggle
+          uix:
+            class: button-lozenge-left
+            sound: true
+  - type: custom:lcars-expander-card
+    header:
+      type: button
+      entity: light.office_office
+      name: Office
+      icon: mdi:lightbulb-group
+      show_name: true
+      show_icon: true
+      tap_action:
+        action: none
+      hold_action:
+        action: toggle
+      uix:
+        class: button-lozenge-left
+        sound: true
+    drawer:
+      columns: 2
+      cards:
+        - type: button
+          entity: light.office_office_s
+          name: South
+          tap_action:
+            action: toggle
+          uix:
+            class: button-capped-left
+            sound: true
+        - type: button
+          name: a button
+          uix:
+            class: button-capped-right
+            sound: true
+    uix:
+      class: middle-left middle-right
+  - type: markdown
+    content: " "
+    uix:
+      class: footer-contained
+column_span: 1
 ```
+
+The theme used on that dashboard view is `LCARS Naviagtion`.
 
 Here it is in-action:
 
