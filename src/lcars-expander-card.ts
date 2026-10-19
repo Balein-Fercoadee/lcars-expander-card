@@ -10,6 +10,7 @@ interface CardConfig extends LovelaceCardConfig {
   };
   default_expanded?: boolean;
   expanded?: boolean;
+  tap_action?: ActionConfig;
   hold_action?: ActionConfig;
   header_style?: string | Record<string, string>;
   drawer_style?: string | Record<string, string>;
@@ -137,10 +138,7 @@ export class LcarsExpanderCard extends LitElement {
     window.clearTimeout(this._holdTimer);
     this._holdTriggered = false;
     this._holdTimer = window.setTimeout(() => {
-      this._holdTriggered = true;
-      if (this.hass && this._config) {
-        handleAction(this, this.hass, { hold_action: this._config.hold_action }, "hold");
-      }
+      this._handleHeaderHold();
     }, 500);
   }
 
@@ -148,10 +146,22 @@ export class LcarsExpanderCard extends LitElement {
     window.clearTimeout(this._holdTimer);
   }
 
+  private _handleHeaderHold(): void {
+    if (this._holdTriggered) return;
+    this._holdTriggered = true;
+    window.clearTimeout(this._holdTimer);
+    if (this.hass && this._config?.hold_action) {
+      handleAction(this, this.hass, { hold_action: this._config.hold_action }, "hold");
+    }
+  }
+
   private _handleHeaderClick(): void {
     if (this._holdTriggered) {
       this._holdTriggered = false;
       return;
+    }
+    if (this.hass && this._config?.tap_action) {
+      handleAction(this, this.hass, { tap_action: this._config.tap_action }, "tap");
     }
     this._expanded = !this._expanded;
   }
@@ -174,6 +184,9 @@ export class LcarsExpanderCard extends LitElement {
           tabindex="0"
           aria-expanded=${this._expanded ? "true" : "false"}
           @click=${this._handleHeaderClick}
+          @tap=${this._handleHeaderClick}
+          @tap-hold=${this._handleHeaderHold}
+          @click-hold=${this._handleHeaderHold}
           @pointerdown=${this._handleHeaderPointerDown}
           @pointerup=${this._handleHeaderPointerEnd}
           @pointercancel=${this._handleHeaderPointerEnd}
